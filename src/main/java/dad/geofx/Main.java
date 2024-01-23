@@ -1,9 +1,12 @@
 package dad.geofx;
 
+import dad.geofx.ui.App;
+
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		App.launch(App.class, args);
 
 	}
 
