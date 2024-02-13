@@ -1,197 +1,479 @@
 package dad.geofx.model;
 
-import dad.geofx.model.LocationModel.Currency;
-import dad.geofx.model.LocationModel.Location;
-import dad.geofx.model.LocationModel.Time_zone;
+import java.util.List;
 
 public class LocationModel {
-	 private double latitude;
-	    private double longitude;
-	    private String city;
-	    private String country_name;
-	    private String callingCode;
-	    private String zip;
-	    private Currency currency;
-	    private Location location;
-	    private Time_zone time_zone;
+	private String ip;
+    private String hostname;
+    private String type;
+    private String continentCode;
+    private String continentName;
+    private String countryCode;
+    private String countryName;
+    private String regionCode;
+    private String regionName;
+    private String city;
+    private String zip;
+    private double latitude;
+    private double longitude;
+    private Location location;
+    private TimeZone timeZone;
+    private Currency currency;
+    private Connection connection;
+    private Security security;
 
-	    public class Currency {
-	        private String code;
-	        private String name;
-	        private String plural;
-	        private String symbol;
-	        private String symbol_native;
+    // Getters and setters
 
-	        @Override
-	        public String toString() {
-	            return "Currency{" +
-	                    "code='" + code + '\'' +
-	                    ", name='" + name + '\'' +
-	                    ", plural='" + plural + '\'' +
-	                    ", symbol='" + symbol + '\'' +
-	                    ", symbol_native='" + symbol_native + '\'' +
-	                    '}';
-	        }
+    public String getIp() {
+        return ip;
+    }
 
-	        public String getCode() {
-	            return code;
-	        }
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 
-	        public void setCode(String code) {
-	            this.code = code;
-	        }
+    public String getHostname() {
+        return hostname;
+    }
 
-	        public String getName() {
-	            return name;
-	        }
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
+    }
 
-	        public void setName(String name) {
-	            this.name = name;
-	        }
+    public String getType() {
+        return type;
+    }
 
-	        public String getPlural() {
-	            return plural;
-	        }
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	        public void setPlural(String plural) {
-	            this.plural = plural;
-	        }
+    public String getContinentCode() {
+        return continentCode;
+    }
 
-	        public String getSymbol() {
-	            return symbol;
-	        }
+    public void setContinentCode(String continentCode) {
+        this.continentCode = continentCode;
+    }
 
-	        public void setSymbol(String symbol) {
-	            this.symbol = symbol;
-	        }
+    public String getContinentName() {
+        return continentName;
+    }
 
-	        public String getSymbolNative() {
-	            return symbol_native;
-	        }
+    public void setContinentName(String continentName) {
+        this.continentName = continentName;
+    }
 
-	        public void setSymbolNative(String symbol_native) {
-	            this.symbol_native = symbol_native;
-	        }
+    public String getCountryCode() {
+        return countryCode;
+    }
 
-	    }
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
 
-	    public static class Location {
-	        private String country_flag;
-	        private String calling_code;
+    public String getCountryName() {
+        return countryName;
+    }
 
-	        public String getCountryFlag() {
-	            return country_flag;
-	        }
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
 
-	        public void setCountryFlag(String country_flag) {
-	            this.country_flag = country_flag;
-	        }
+    public String getRegionCode() {
+        return regionCode;
+    }
 
-	        public String getCalling_code() {
-	            return calling_code;
-	        }
+    public void setRegionCode(String regionCode) {
+        this.regionCode = regionCode;
+    }
 
-	        public void setCalling_code(String calling_code) {
-	            this.calling_code = calling_code;
-	        }
+    public String getRegionName() {
+        return regionName;
+    }
 
-	        @Override
-	        public String toString() {
-	            return "Location{" +
-	                    "country_flag='" + country_flag + '\'' +
-	                    ", calling_code='" + calling_code + '\'' +
-	                    '}';
-	        }
+    public void setRegionName(String regionName) {
+        this.regionName = regionName;
+    }
 
-	    }
+    public String getCity() {
+        return city;
+    }
 
-	    public static class Time_zone {
-	        private String code;
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	        public String getCode() {
-	            return code;
-	        }
+    public String getZip() {
+        return zip;
+    }
 
-	        public void setCode(String code) {
-	            this.code = code;
-	        }
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
 
-	        public String toString() {
-	            return "Time_zone{" +
-	                    "code='" + code + '\'' +
-	                    '}';
-	        }
-	      
-	    }
+    public double getLatitude() {
+        return latitude;
+    }
 
-	    public Time_zone getTime_zone() {
-	        return time_zone;
-	    }
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
 
-	    public void setTime_zone(Time_zone time_zone) {
-	        this.time_zone = time_zone;
-	    }
+    public double getLongitude() {
+        return longitude;
+    }
 
-	    @Override
-	    public String toString() {
-	        return "LocationModel{" +
-	                "latitude=" + latitude +
-	                ", longitude=" + longitude +
-	                ", city='" + city + '\'' +
-	                ", country_name='" + country_name + '\'' +
-	                ", currency=" + currency +
-	                ", location=" + location +
-	                ", time_zone=" + time_zone +
-	                '}';
-	    }
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 
-	    // Constructor, getters y setters para cada variable.
+    public Location getLocation() {
+        return location;
+    }
 
-	    public String getZip() {
-	        return zip;
-	    }
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 
-	    public void setZip(String zip) {
-	        this.zip = zip;
-	    }
+    public TimeZone getTimeZone() {
+        return timeZone;
+    }
 
-	    public String getCountryName() {
-	        return country_name;
-	    }
+    public void setTimeZone(TimeZone timeZone) {
+        this.timeZone = timeZone;
+    }
 
-	    public void setCountryName(String country_name) {
-	        this.country_name = country_name;
-	    }
+    public Currency getCurrency() {
+        return currency;
+    }
 
-	    public String getCallingCode() {
-	        return callingCode;
-	    }
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
 
-	    public void setCallingCode(String callingCode) {
-	        this.callingCode = callingCode;
-	    }
+    public Connection getConnection() {
+        return connection;
+    }
 
-	    public double getLatitude() {
-	        return latitude;
-	    }
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
 
-	    public void setLatitude(double latitude) {
-	        this.latitude = latitude;
-	    }
+    public Security getSecurity() {
+        return security;
+    }
 
-	    public double getLongitude() {
-	        return longitude;
-	    }
+    public void setSecurity(Security security) {
+        this.security = security;
+    }
 
-	    public void setLongitude(double longitude) {
-	        this.longitude = longitude;
-	    }
+    public static class Location {
+        private int geonameId;
+        private String capital;
+        private List<Language> languages;
+        private String countryFlag;
+        private String countryFlagEmoji;
+        private String countryFlagEmojiUnicode;
+        private String callingCode;
+        private boolean isEu;
 
-	    public String getCity() {
-	        return city;
-	    }
+        // Getters and setters
 
-	    public void setCity(String city) {
-	        this.city = city;
-	    }
+        public int getGeonameId() {
+            return geonameId;
+        }
+
+        public void setGeonameId(int geonameId) {
+            this.geonameId = geonameId;
+        }
+
+        public String getCapital() {
+            return capital;
+        }
+
+        public void setCapital(String capital) {
+            this.capital = capital;
+        }
+
+        public List<Language> getLanguages() {
+            return languages;
+        }
+
+        public void setLanguages(List<Language> languages) {
+            this.languages = languages;
+        }
+
+        public String getCountryFlag() {
+            return countryFlag;
+        }
+
+        public void setCountryFlag(String countryFlag) {
+            this.countryFlag = countryFlag;
+        }
+
+        public String getCountryFlagEmoji() {
+            return countryFlagEmoji;
+        }
+
+        public void setCountryFlagEmoji(String countryFlagEmoji) {
+            this.countryFlagEmoji = countryFlagEmoji;
+        }
+
+        public String getCountryFlagEmojiUnicode() {
+            return countryFlagEmojiUnicode;
+        }
+
+        public void setCountryFlagEmojiUnicode(String countryFlagEmojiUnicode) {
+            this.countryFlagEmojiUnicode = countryFlagEmojiUnicode;
+        }
+
+        public String getCallingCode() {
+            return callingCode;
+        }
+
+        public void setCallingCode(String callingCode) {
+            this.callingCode = callingCode;
+        }
+
+        public boolean isEu() {
+            return isEu;
+        }
+
+        public void setEu(boolean eu) {
+            isEu = eu;
+        }
+    }
+
+    public static class Language {
+        private String code;
+        private String name;
+        private String nativeName;
+
+        // Getters and setters
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(String code) {
+            this.code = code;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getNativeName() {
+            return nativeName;
+        }
+
+        public void setNativeName(String nativeName) {
+            this.nativeName = nativeName;
+        }
+    }
+
+    public static class TimeZone {
+        private String id;
+        private String currentTime;
+        private int gmtOffset;
+        private String code;
+        private boolean isDaylightSaving;
+
+        // Getters and setters
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public String getCurrentTime() {
+            return currentTime;
+        }
+
+        public void setCurrentTime(String currentTime) {
+            this.currentTime = currentTime;
+        }
+
+        public int getGmtOffset() {
+            return gmtOffset;
+        }
+
+        public void setGmtOffset(int gmtOffset) {
+            this.gmtOffset = gmtOffset;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(String code) {
+            this.code = code;
+        }
+
+        public boolean isDaylightSaving() {
+            return isDaylightSaving;
+        }
+
+        public void setDaylightSaving(boolean daylightSaving) {
+            isDaylightSaving = daylightSaving;
+        }
+    }
+
+    public static class Currency {
+        private String code;
+        private String name;
+        private String plural;
+        private String symbol;
+        private String symbolNative;
+
+        // Getters and setters
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(String code) {
+            this.code = code;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getPlural() {
+            return plural;
+        }
+
+        public void setPlural(String plural) {
+            this.plural = plural;
+        }
+
+        public String getSymbol() {
+            return symbol;
+        }
+
+        public void setSymbol(String symbol) {
+            this.symbol = symbol;
+        }
+
+        public String getSymbolNative() {
+            return symbolNative;
+        }
+
+        public void setSymbolNative(String symbolNative) {
+            this.symbolNative = symbolNative;
+        }
+    }
+
+    public static class Connection {
+        private int asn;
+        private String isp;
+
+        // Getters and setters
+
+        public int getAsn() {
+            return asn;
+        }
+
+        public void setAsn(int asn) {
+            this.asn = asn;
+        }
+
+        public String getIsp() {
+            return isp;
+        }
+
+        public void setIsp(String isp) {
+            this.isp = isp;
+        }
+    }
+
+    public static class Security {
+        private boolean isProxy;
+        private String proxyType;
+        private boolean isCrawler;
+        private String crawlerName;
+        private String crawlerType;
+        private boolean isTor;
+        private String threatLevel;
+        private List<String> threatTypes;
+
+        // Getters and setters
+
+        public boolean isProxy() {
+            return isProxy;
+        }
+
+        public void setProxy(boolean proxy) {
+            isProxy = proxy;
+        }
+
+        public String getProxyType() {
+            return proxyType;
+        }
+
+        public void setProxyType(String proxyType) {
+            this.proxyType = proxyType;
+        }
+
+        public boolean isCrawler() {
+            return isCrawler;
+        }
+
+        public void setCrawler(boolean crawler) {
+            isCrawler = crawler;
+        }
+
+        public String getCrawlerName() {
+            return crawlerName;
+        }
+
+        public void setCrawlerName(String crawlerName) {
+            this.crawlerName = crawlerName;
+        }
+
+        public String getCrawlerType() {
+            return crawlerType;
+        }
+
+        public void setCrawlerType(String crawlerType) {
+            this.crawlerType = crawlerType;
+        }
+
+        public boolean isTor() {
+            return isTor;
+        }
+
+        public void setTor(boolean tor) {
+            isTor = tor;
+        }
+
+        public String getThreatLevel() {
+            return threatLevel;
+        }
+
+        public void setThreatLevel(String threatLevel) {
+            this.threatLevel = threatLevel;
+        }
+
+        public List<String> getThreatTypes() {
+            return threatTypes;
+        }
+
+        public void setThreatTypes(List<String> threatTypes) {
+            this.threatTypes = threatTypes;
+        }
+    }
 }

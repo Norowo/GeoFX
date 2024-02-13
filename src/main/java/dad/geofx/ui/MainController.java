@@ -2,6 +2,7 @@ package dad.geofx.ui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import dad.geofx.api.IpApiService;
@@ -150,24 +151,30 @@ public class MainController implements Initializable {
 	    longitudeText.setText(String.valueOf(location.getLongitude()));
 	    cityStateText.setText(location.getCity() != null ? location.getCity() : "");
 	    zipCodeText.setText(location.getZip() != null ? location.getZip() : "");
-	    // languageText.setText(location.getLanguage() != null ? location.getLanguage()
-	    // : "");
-	    if (location.getTime_zone() != null) {
-	      timeZoneText.setText(location.getTime_zone().getCode() != null ? location.getTime_zone().getCode() : "");
-	    } else {
-	      timeZoneText.setText("");
+	    
+	    List<LocationModel.Language> languages = location.getLocation().getLanguages();
+        languageText.setText(languages.get(0).getName() + " (" + languages.get(0).getCode().toUpperCase() + ")");
+        
+	    
+        ipLocationText.setText((location.getCountryName() != null ? location.getCountryName() : "") 
+				+ (location.getCountryCode() != null ? " (" + location.getCountryCode() + ")" : ""));
+        
+        System.out.println(location.getCountryName());
+        callingCodeText.setText(location.getLocation().getCallingCode());
+        currencyText.setText(location.getCurrency().getCode());
+        ipAddressText.setText(location.getIp());
+        typeText.setText(location.getType());
+        asnText.setText(String.valueOf(location.getConnection().getAsn()));
+        hostnameText.setText(location.getHostname());
+        proxyDetectedCheck.setSelected(location.getSecurity().isProxy());
+        torDetectedCheck.setSelected(location.getSecurity().isTor());
+        crawlerDetectedCheck.setSelected(location.getSecurity().isCrawler());
+        threatLevelText.setText(location.getSecurity().getThreatLevel());
+       
+        
+       
 	    }
-
-	    // callingCodeText.setText(location.getLocation().getCallingCode());
-	    // currencyText.setText(location.getCurrency().getName() + " (" +
-	    // location.getCurrency().getSymbol() + ")");
-
-	    // // Para la imagen de la bandera, necesitarás cargar la imagen desde la URL
-	    // Image flag = new Image(location.getLocation().getCountryFlag(), true); //
-	    // true para cargar en segundo plano
-	    // flagImage.setImage(flag);
-	    // ... actualiza el resto de las etiquetas
-	  }
+	  
 
 	@FXML
 	void onCheck(ActionEvent event) {
